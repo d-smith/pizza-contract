@@ -1,5 +1,4 @@
-
-#pizza contract
+# pizza contract
 
 Solidity smart contract for pizza tracking
 
