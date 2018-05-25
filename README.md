@@ -20,8 +20,8 @@ Deploy the contract
 
 Watch for events
 
-     var events = deployed.allEvents();
-     events.watch(function(error, event){
+    var events = deployed.allEvents();
+    events.watch(function(error, event){
     if (!error)
         console.log(event);
     });
