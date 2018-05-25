@@ -1,24 +1,36 @@
 
+#pizza contract
 
-testrpc
+Solidity smart contract for pizza tracking
 
-decyphertv console
+## notes
 
+Trying it out
 
+Run the test network locally:
 
-var deployed = decypher.createContract('pizza.sol');
-deployed.finalizeOrder({'from':acct1})
+    testrpc
 
-var event = deployed.OrderReceived();
-event.watch((error, result) => {
-    console.log(`order received - ${result.args._order}`);
-})
+Run the decyphertc console to leverage the utils it bring into you node session:
 
+    decyphertv console
 
-var filter = web3.eth.filter('pending');
-filter.watch(function(error, result){
+Deploy the contract
+
+    var deployed = decypher.createContract('pizza.sol');
+
+Watch for events
+
+     var events = deployed.allEvents();
+     events.watch(function(error, event){
     if (!error)
-        console.log(result);
-});
+        console.log(event);
+    });
+
+Call some methods
+
+    deployed.finalizeOrder({'from':acct1})
+
+
 
 
