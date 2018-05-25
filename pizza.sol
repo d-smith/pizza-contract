@@ -10,26 +10,28 @@ contract Pizza {
 
     PizzaState public  currentState;
 
+    modifier onlyState(PizzaState expectedState) { if (expectedState == currentState) {_;} else {throw;}}
+
     function Pizza() {
         currentState = PizzaState.start;
     }
 
-    function finalizeOrder() {
+    function finalizeOrder() onlyState(PizzaState.start) {
         currentState = PizzaState.orderReceieved;
         OrderReceived(msg.sender, this);
     }
 
-    function assemblePizza() {
+    function assemblePizza() onlyState(PizzaState.orderReceieved) {
         currentState = PizzaState.assemblingPizza;
         AssemblingPizza(this);
     }
 
-    function cookPizza() {
+    function cookPizza() onlyState(PizzaState.assemblingPizza) {
         currentState = PizzaState.cookingPizza;
         CookingPizza(this);
     }
 
-    function boxPizza() {
+    function boxPizza() onlyState(PizzaState.cookingPizza) {
         currentState = PizzaState.pizzaReady;
         PizzaReady(this);
     }

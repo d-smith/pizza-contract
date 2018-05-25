@@ -29,6 +29,9 @@ Watch for events
 Call some methods
 
     deployed.finalizeOrder({'from':acct1})
+    deployed.assemblePizza({'from':acct1})
+    deployed.cookPizza({'from':acct1})
+    deployed.boxPizza({'from':acct1})
 
 
 
